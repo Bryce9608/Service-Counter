@@ -1,0 +1,68 @@
+#
+#       project: Service-Counter.py
+#        author: Bryce Ishler <Bishler2709327@woonsocketschools.com>
+#  date written: 3/12/2025
+#
+# description: Creating an app that stores data for a car mechanic shop.
+
+print("Hello, Welcome to the Repair shop at WACTC. Can I get a name before we start?")
+
+name = input("What is your name?: ")
+print(f"Hello {name}")
+
+vehicle = input("What is the type of your vehicle (car, truck, motorcycle)?: ").lower()
+
+# Assign a base service price based on vehicle type
+if vehicle == "car":
+    print("Cars are our specialty!")
+    base_price = 50
+elif vehicle == "truck":
+    print("Trucks require heavy-duty care!")
+    base_price = 70
+elif vehicle == "motorcycle":
+    print("Motorcycles are always a joy to work on!")
+    base_price = 30
+else:
+    print("We service all kinds of vehicles, so don't worry!")
+    base_price = 40  # Default price for other vehicles
+
+year = input("What is the year of your vehicle?: ")
+print(f"Ok, so a {vehicle} {year}")
+
+color = input("What is the color of your vehicle?: ")
+print(f"Ok, so a {color} {year} {vehicle}")
+
+# Adding prices for additional services
+print("\nNow, let's add some additional services to your repair bill.")
+print("Here are the available services with their prices:")
+services = {
+    "oil change": 79.99,
+    "tire rotation": 30,
+    "brake pads and front end alignment": 120,
+    "window repair": 69.99,
+    "small dent removal": 5,
+    "large dent removal": 15
+}
+
+# Display the services and prices
+for service, price in services.items():
+    print(f"{service.title()}: ${price}")
+
+total_cost = base_price  # Start with the base price
+print(f"\nBase service price for your {vehicle}: ${base_price}")
+
+# Allow user to add services
+while True:
+    selected_service = input("\nEnter a service you want to add (or type 'done' to finish): ").lower()
+    if selected_service == "done":
+        break
+    elif selected_service in services:
+        total_cost += services[selected_service]
+        print(f"{selected_service.title()} added. Current total: ${total_cost:.2f}")
+    else:
+        print("Invalid service. Please select a valid service from the list.")
+
+# Display the final total
+print(f"\nThank you, {name}. The total cost for your {color} {year} {vehicle} is ${total_cost:.2f}. We'll take great care of it!")
+
+print("Thanks for choosing the repair shot at WACTC! Have a great day!!!.")
